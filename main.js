@@ -1,9 +1,11 @@
 $(document).ready(function() {
-   initializeApp();
+    initializeApp();
 });
 
 function initializeApp() {
-   leftToRightFlip();
+    setInterval(function() {
+        leftToRightFlip();
+    }, 3500);
 }
 
 function leftToRightFlip() {
@@ -23,17 +25,17 @@ function leftToRightFlip() {
             tileHeight = tileHeight.slice(0, i);
         }
     }
-    let rowMultiplier = Math.ceil(screenWidth / tileWidth);
+    let rowMultiplier = Math.ceil(screenHeight / tileWidth);
 
     //column iterator
     let timer = 0;
-    for (let column = 0; column < columnMultiplier; column++) {
-        for (let row = 0; row < rowMultiplier; row++) {
+    for (let row = 0; row < rowMultiplier; row++) {
+        for (let column = 0; column < columnMultiplier; column++) {
             setTimeout(function() {
-                    $($('.flipper')[row * 40 + column]).css('transform', 'rotateY(180deg)');
-                }, timer);
-                timer += 200;
-            if (row + 1 === rowMultiplier) {
+                $($('.flipper')[row * columnMultiplier + column]).toggleClass('flipped');
+            }, timer);
+            timer += 100;
+            if (column + 1 === columnMultiplier) {
                 timer = 0;
             }
         }
