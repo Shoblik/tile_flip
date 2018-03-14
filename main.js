@@ -14,16 +14,29 @@ function leftToRightFlip() {
             tileWidth = tileWidth.slice(0, i);
         }
     }
-    let multiplier = Math.ceil(screenWidth / tileWidth);
+    let columnMultiplier = Math.ceil(screenWidth / tileWidth);
+
+    let screenHeight = window.innerHeight;
+    let tileHeight = $('.flip-container').css('height');
+    for (let i = 0; i < tileHeight.length; i++) {
+        if (tileHeight[i] === 'p') {
+            tileHeight = tileHeight.slice(0, i);
+        }
+    }
+    let rowMultiplier = Math.ceil(screenWidth / tileWidth);
 
     //column iterator
-    let row = 0;
     let timer = 0;
-    for (let column = 0; column < multiplier; column++) {
-        setTimeout(function() {
-            $($('.flipper')[row * 40 + column]).css('transform', 'rotateY(180deg)');
-        }, timer);
-        timer += 50;
+    for (let column = 0; column < columnMultiplier; column++) {
+        for (let row = 0; row < rowMultiplier; row++) {
+            setTimeout(function() {
+                    $($('.flipper')[row * 40 + column]).css('transform', 'rotateY(180deg)');
+                }, timer);
+                timer += 200;
+            if (row + 1 === rowMultiplier) {
+                timer = 0;
+            }
+        }
     }
 }
 
