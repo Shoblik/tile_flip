@@ -18,7 +18,7 @@ body {
     display: inline-block;
     height: 6.25%;
     width: 2.5%;
-    transition: 1s;
+    /*transition: 3s;*/
 }
 /*  UPDATED! flip the pane when hovered */
 .flip-container:hover .back {
@@ -42,7 +42,7 @@ body {
 
 /* flip speed goes here */
 .flipper {
-    transition: 1s;
+    transition: 2s;
     transform-style: preserve-3d;
     position: relative;
     height: 100%;
@@ -51,7 +51,6 @@ body {
 }
 .flipped {
     transform: rotateY(180deg);
-    transition: 1s;
 }
 
 /* hide back of pane during swap */
